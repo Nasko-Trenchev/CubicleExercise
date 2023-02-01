@@ -9,6 +9,6 @@ router.get('/404', homeController.getErrorPage);
 
 router.get('/details/:cubeId', cubeController.getDetailsPage)
 
-
+router.get('/create', cubeController.getCreatePage);
 
 module.exports = router;
