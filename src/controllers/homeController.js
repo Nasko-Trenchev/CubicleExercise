@@ -7,7 +7,12 @@ exports.getHomePage = async (req, res) =>{
 }
 
 
-exports.getAboutPage = async (req, res) =>{
+exports.getAboutPage = (req, res) =>{
 
     res.render('about');
+}
+
+exports.getErrorPage = (req, res) => {
+
+    res.render('404');
 }
