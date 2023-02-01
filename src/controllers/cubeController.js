@@ -1,10 +1,11 @@
 const Cube = require('../models/Cube');
+const Accessory = require("../models/Accessory");
 
 exports.getDetailsPage = async (req, res) =>{
 
    const cube = await Cube.findById(req.params.cubeId).lean();
 
-   //ToDo - pass attachments as well
+   //ToDo - pass accessories as well
    res.render("details", {cube});
 }
 
