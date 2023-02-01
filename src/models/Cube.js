@@ -17,6 +17,10 @@ const cubeShema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true
+    },
+    accessories: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Accessory'
     }
 })
 

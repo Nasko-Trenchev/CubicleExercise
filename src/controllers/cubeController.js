@@ -23,3 +23,11 @@ exports.postCreatePage = async (req, res) => {
 
     res.redirect('/');
 }
+
+exports.getDetailsAttachPage = async (req, res) =>{
+
+    const cube = await Cube.findById(req.params.cubeId).lean();
+    const accessories = await Accessory.find({_id: {$nin: cube.accessories}}).lean();
+
+    res.render('attachAccessory', {cube, accessories});
+}
