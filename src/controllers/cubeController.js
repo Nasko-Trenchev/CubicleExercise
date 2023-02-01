@@ -3,7 +3,7 @@ const Accessory = require("../models/Accessory");
 
 exports.getDetailsPage = async (req, res) =>{
 
-   const cube = await Cube.findById(req.params.cubeId).lean();
+    let cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
 
    //ToDo - pass accessories as well
    res.render("details", {cube});

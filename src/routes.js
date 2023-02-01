@@ -8,7 +8,7 @@ router.get('/', homeController.getHomePage);
 router.get('/about', homeController.getAboutPage);
 router.get('/404', homeController.getErrorPage);
 
-router.get('/details/:cubeId', cubeController.getDetailsPage)
+router.get(`/cubes/:cubeId/details`, cubeController.getDetailsPage)
 
 router.get('/create', cubeController.getCreatePage);
 router.post('/create', cubeController.postCreatePage);
