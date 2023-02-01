@@ -1,7 +1,8 @@
+const Cube = require('../models/Cube');
 
+exports.getHomePage = async (req, res) =>{
 
-exports.getHomePage = (req, res) =>{
-
-    res.render('index');
+    const cube = await Cube.find().lean();
+    res.render('index', {cube});
 }
 
