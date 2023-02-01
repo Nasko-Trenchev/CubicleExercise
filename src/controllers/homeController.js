@@ -6,3 +6,8 @@ exports.getHomePage = async (req, res) =>{
     res.render('index', {cube});
 }
 
+
+exports.getAboutPage = async (req, res) =>{
+
+    res.render('about');
+}

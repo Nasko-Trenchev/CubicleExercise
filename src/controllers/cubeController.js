@@ -1,7 +1,8 @@
 const Cube = require('../models/Cube');
 
-exports.getDetailsPage = (req, res) =>{
+exports.getDetailsPage = async (req, res) =>{
 
-   
-    res.render("details")
+   const cube = await Cube.findById(req.params.cubeId).lean();
+
+   res.render("details", {cube});
 }
