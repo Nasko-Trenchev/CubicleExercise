@@ -15,4 +15,5 @@ router.post('/create', cubeController.postCreatePage);
 
 
 router.use('/accessories', accessoryControler);
+
 module.exports = router;
