@@ -10,5 +10,6 @@ router.get('/404', homeController.getErrorPage);
 router.get('/details/:cubeId', cubeController.getDetailsPage)
 
 router.get('/create', cubeController.getCreatePage);
+router.post('/create', cubeController.postCreatePage);
 
 module.exports = router;

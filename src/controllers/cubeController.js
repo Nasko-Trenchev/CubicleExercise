@@ -12,3 +12,13 @@ exports.getCreatePage = async (req, res) =>{
 
     res.render("create");
 }
+
+exports.postCreatePage = async (req, res) => {
+
+    const {name, description, imageUrl, difficultyLevel} = req.body;
+
+    let cube = new Cube({name, description, imageUrl, difficultyLevel})
+    await cube.save();
+
+    res.redirect('/');
+}
