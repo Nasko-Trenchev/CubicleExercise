@@ -4,11 +4,11 @@ const Accessory = require("../models/Accessory");
 exports.getDetailsPage = async (req, res) =>{
 
    let cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
-   res.render("details", {cube});
+   res.render("cube/details", {cube});
 }
 
 exports.getCreatePage = async (req, res) =>{
-    res.render("create");
+    res.render("cube/create");
 }
 
 exports.postCreatePage = async (req, res) => {
@@ -26,7 +26,7 @@ exports.getDetailsAttachPage = async (req, res) =>{
     const cube = await Cube.findById(req.params.cubeId).lean();
     const accessories = await Accessory.find({_id: {$nin: cube.accessories}}).lean();
 
-    res.render('attachAccessory', {cube, accessories});
+    res.render('cube/attachAccessory', {cube, accessories});
 }
 
 exports.postDetailsAttachPage = async (req, res) =>{

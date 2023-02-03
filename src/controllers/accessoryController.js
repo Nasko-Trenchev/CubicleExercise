@@ -4,7 +4,7 @@ const Accessory = require('../models/Accessory');
 
 router.get('/create', (req, res) =>{
 
-    res.render('createAccessory');
+    res.render('accessory/createAccessory');
 })
 
 router.post('/create', async (req, res) =>{
