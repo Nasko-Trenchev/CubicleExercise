@@ -3,6 +3,7 @@ const homeController = require('./controllers/homeController');
 const cubeController = require('./controllers/cubeController');
 const accessoryController = require('./controllers/accessoryController');
 const authController = require('./controllers/authController');
+const {isAuthenticated} = require('./middlewares/authmiddleware')
 
 
 router.get('/', homeController.getHomePage);
@@ -13,8 +14,8 @@ router.use('/', authController);
 
 router.get(`/cubes/:cubeId/details`, cubeController.getDetailsPage)
 
-router.get('/create', cubeController.getCreatePage);
-router.post('/create', cubeController.postCreatePage);
+router.get('/create', isAuthenticated, cubeController.getCreatePage);
+router.post('/create', isAuthenticated, cubeController.postCreatePage);
 router.get('/cubes/:cubeId/attach', cubeController.getDetailsAttachPage);
 router.post('/cubes/:cubeId/attach', cubeController.postDetailsAttachPage);
 

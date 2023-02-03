@@ -11,7 +11,6 @@ router.post('/login', async (req, res) =>{
 
     try{
       const token = await authService.login(username, password)
-      console.log(token);
       res.cookie('auth', token, {httpOnly: true});
 
     }

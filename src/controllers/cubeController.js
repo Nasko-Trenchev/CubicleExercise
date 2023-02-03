@@ -8,11 +8,14 @@ exports.getDetailsPage = async (req, res) =>{
 }
 
 exports.getCreatePage = async (req, res) =>{
+
+    console.log(req.user);
     res.render("cube/create");
 }
 
 exports.postCreatePage = async (req, res) => {
 
+    
     const {name, description, imageUrl, difficultyLevel} = req.body;
 
     let cube = new Cube({name, description, imageUrl, difficultyLevel})
