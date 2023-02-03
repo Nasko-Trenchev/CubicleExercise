@@ -27,7 +27,7 @@ userShema.pre('save', function(next){
 userShema.method('validatePassword', function(password){
 
   return bcrypt.compare(password, this.password);
-  
+
 })
 
 const User = mongoose.model('User', userShema);

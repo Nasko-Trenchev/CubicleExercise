@@ -1,3 +1,7 @@
+
+const jwt = require('../lib/jsonWebToken');
+const config = require('../config')
+
 const User = require('../models/User');
 
 exports.register = async (username, password) => User.create({username, password})
@@ -15,5 +19,7 @@ exports.login = async (username, password) => {
         throw "Invalid username or password!";
     }
 
-    return user;
+    const payload = {username: user.username}
+    const token = await jwt.sign(payload, config.SECRET, {expiresIn: '2h'})
+    return token;
 }
