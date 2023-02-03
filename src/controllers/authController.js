@@ -5,9 +5,18 @@ router.get('/login', (req, res) =>{
     res.render('auth/login');
 })
 
-router.post('/login', (req, res) =>{
+router.post('/login', async (req, res) =>{
 
     const {username, password} = req.body;
+
+    try{
+        await authService.login(username, password)
+    }
+    catch(err){
+        console.log(err);
+        res.redirect('/');
+    }
+   
 
     res.redirect('/');
 })
@@ -24,17 +33,16 @@ router.post('/register', async (req, res) =>{
     const existingUser = await authService.getUserByUsername(username);
 
     if(password !== repeatPassword){
-        throw "Wrong username or password!";
+        return res.redirect('404');
     }
 
     if(existingUser){
-        return res.status(404).end();
+        return res.redirect('404');
     }
 
-    await authService.register(username, password)
+    const user =  await authService.register(username, password)
 
-
-    res.redirect('/')
+    res.redirect('/login')
 })
 
 
