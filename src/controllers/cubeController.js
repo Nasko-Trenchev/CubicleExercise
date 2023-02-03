@@ -3,14 +3,11 @@ const Accessory = require("../models/Accessory");
 
 exports.getDetailsPage = async (req, res) =>{
 
-    let cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
-
-   //ToDo - pass accessories as well
+   let cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
    res.render("details", {cube});
 }
 
 exports.getCreatePage = async (req, res) =>{
-
     res.render("create");
 }
 

@@ -16,7 +16,8 @@ const cubeShema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
+        match: [/^https?:\/\//, "Invalid URL"]
     },
     accessories: [{
         type: mongoose.Types.ObjectId,

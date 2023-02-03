@@ -8,17 +8,16 @@ exports.getHomePage = async (req, res) =>{
 
     if(search){
 
-       cube = cube.filter(x=>x.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+       cube = cube.filter(cube=>cube.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
     }
     if(from){
-        cube = cube.filter(x=>x.difficultyLevel >= from)
+        cube = cube.filter(cube=>cube.difficultyLevel >= from)
     }
     if(to){
-        cube =  cube.filter(x=>x.difficultyLevel <= to)
+        cube =  cube.filter(cube=>cube.difficultyLevel <= to)
     }
     res.render('index', {cube});
 }
-
 
 exports.getAboutPage = (req, res) =>{
 
