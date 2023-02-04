@@ -68,3 +68,11 @@ exports.getDeleteCube = async (req, res) =>{
 
     res.render('cube/delete', {cube, difficultyLevels})
 }
+
+
+exports.postDeleteCube = async (req, res) =>{
+
+    await cubeService.delete(req.params.cubeId);
+
+    res.redirect('/')
+}
