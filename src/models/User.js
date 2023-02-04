@@ -12,7 +12,8 @@ const userShema = new mongoose.Schema({
         type: String,
         required: true,
         minLenght: [6, "Password is too short"]
-    }
+    },
+    
 })
 
 

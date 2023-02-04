@@ -6,7 +6,8 @@ const cubeUtils = require('../utils/cubeUtils');
 exports.getDetailsPage = async (req, res) =>{
 
    let cube = await Cube.findById(req.params.cubeId).populate('accessories').lean();
-   res.render("cube/details", {cube});
+   const isOwner = cubeService.isOwner(req.user, cube)
+   res.render("cube/details", {cube, isOwner});
 }
 
 exports.getCreatePage = async (req, res) =>{
@@ -20,7 +21,8 @@ exports.postCreatePage = async (req, res) => {
     
     const {name, description, imageUrl, difficultyLevel} = req.body;
 
-    let cube = new Cube({name, description, imageUrl, difficultyLevel})
+    let cube = new Cube({name, description, imageUrl, difficultyLevel, owner: req.user._id })
+    cube.owner = 
     await cube.save();
 
     res.redirect('/');
